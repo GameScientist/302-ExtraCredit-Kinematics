@@ -25,13 +25,13 @@ public class Bone : MonoBehaviour
         if (chainLength == 0) chainLength = 5;
         line = GetComponentInChildren<LineRenderer>();
         line.sortingOrder = chainLength;
-        line.startWidth = 0.2f * (chainLength);
-        line.endWidth = 0.2f*(chainLength);
+        line.startWidth = 0.1f * (chainLength);
+        line.endWidth = 0.1f*(chainLength);
         dir = Random.Range(-1, 2);
         wiggleOffset = Random.Range(0, 6.28f);
         wiggleAmp = Random.Range(.5f, 3f) / chainLength;
         wiggleTimeScale = Random.Range(.25f, 1);
-        mag = Random.Range(0.6f, 0.8f);
+        mag = Random.Range(0.4f, 0.5f);
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class Bone : MonoBehaviour
         {
             worldStart = new Vector3(0, 0, 0);
             worldDir = 1.57f;
-            chainLength = 5;
+            chainLength = 10;
         }
         worldDir += Mathf.Sin((Time.time + wiggleOffset) * wiggleTimeScale) * wiggleAmp;
 

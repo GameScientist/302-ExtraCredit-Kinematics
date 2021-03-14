@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 619136853}
   - component: {fileID: 619136852}
   - component: {fileID: 619136851}
-  - component: {fileID: 619136850}
   m_Layer: 0
   m_Name: Hill
   m_TagString: Untagged
@@ -203,19 +202,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &619136850
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619136849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &619136851
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -235,7 +221,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2090ac3e00efab44ab4a7e0439b4d14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -497,7 +483,7 @@ MonoBehaviour:
   mag: 0
   chainLength: 0
   bonesAdded: 0
-  leaf: {fileID: 6316027961245756121, guid: 52f8865b1387ff242875d59dc5ec7835, type: 3}
+  leaf: {fileID: 8670913853962536237, guid: 4bf58b19ec0b768469732de373623526, type: 3}
   leavesAdded: 0
 --- !u!120 &2132420537
 LineRenderer:
