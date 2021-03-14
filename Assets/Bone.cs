@@ -20,12 +20,13 @@ public class Bone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (chainLength == 0) chainLength = 5;
         line = GetComponentInChildren<LineRenderer>();
         dir = Random.Range(-1, 2);
         wiggleOffset = Random.Range(0, 6.28f);
-        wiggleAmp = Random.Range(.5f, 2);
+        wiggleAmp = Random.Range(.5f, 3f) / chainLength;
         wiggleTimeScale = Random.Range(.25f, 1);
-        mag = Random.Range(1f, 2f);
+        mag = Random.Range(0.6f, 0.8f);
     }
 
     // Update is called once per frame
@@ -39,13 +40,13 @@ public class Bone : MonoBehaviour
         else
         {
             worldStart = new Vector3(0, 0, 0);
-            worldDir = dir;
+            worldDir = 1.57f;
             chainLength = 5;
         }
         worldDir += Mathf.Sin((Time.time + wiggleOffset) * wiggleTimeScale) * wiggleAmp;
 
         Vector3 localEnd = new Vector3(mag * Mathf.Cos(worldDir), mag * Mathf.Sin(worldDir));
-        localEnd *= mag;
+        localEnd *= mag * chainLength;
 
         worldEnd = worldStart + localEnd;
 
@@ -54,7 +55,7 @@ public class Bone : MonoBehaviour
 
         if (chainLength > 1 && bonesAdded == false)
         {
-            int numOfChildren = (int)Random.Range(1, 4);
+            int numOfChildren = (int)Random.Range(2, 4);
 
             for (int i = 0; i < numOfChildren; i++)
             {
