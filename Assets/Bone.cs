@@ -16,12 +16,17 @@ public class Bone : MonoBehaviour
     public float mag;
     public int chainLength;
     public bool bonesAdded = false;
+    public Leaf leaf;
+    public bool leavesAdded = false;
 
     // Start is called before the first frame update
     void Start()
     {
         if (chainLength == 0) chainLength = 5;
         line = GetComponentInChildren<LineRenderer>();
+        line.sortingOrder = chainLength;
+        line.startWidth = 0.2f * (chainLength);
+        line.endWidth = 0.2f*(chainLength);
         dir = Random.Range(-1, 2);
         wiggleOffset = Random.Range(0, 6.28f);
         wiggleAmp = Random.Range(.5f, 3f) / chainLength;
@@ -64,6 +69,17 @@ public class Bone : MonoBehaviour
                 newBone.chainLength = chainLength - 1;
             }
             bonesAdded = true;
+        }
+
+        else if (!leavesAdded && chainLength == 1)
+        {
+            int numOfChildren = (int)Random.Range(1, 4);
+            for (int i = 0; i < numOfChildren; i++)
+            {
+                Leaf newLeaf = Instantiate(leaf, new Vector3(worldEnd.x, worldEnd.y, worldEnd.z), Quaternion.Euler(worldDir * Mathf.Deg2Rad * transform.forward));
+                newLeaf.parent = this;
+            }
+            leavesAdded = true;
         }
     }
 }
